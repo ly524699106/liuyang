@@ -82,33 +82,42 @@
 			}
 		}
 
-var day="";
-var month="";
-var ampm="";
-var ampmhour="";
-var myweekday="";
-var year="";
-mydate=new Date();
-myweekday=mydate.getDay();
-mymonth=mydate.getMonth()+1;
-myday= mydate.getDate();
-myyear= mydate.getYear();
-year=(myyear > 200) ? myyear : 1900 + myyear;
-if(myweekday == 0)
-weekday=" 星期日 ";
-else if(myweekday == 1)
-weekday=" 星期一 ";
-else if(myweekday == 2)
-weekday=" 星期二 ";
-else if(myweekday == 3)
-weekday=" 星期三 ";
-else if(myweekday == 4)
-weekday=" 星期四 ";
-else if(myweekday == 5)
-weekday=" 星期五 ";
-else if(myweekday == 6)
-weekday=" 星期六 ";
-document.write("<font color=#ff0000>北京时间 "+year+"年"+mymonth+"月"+myday+"日 "+weekday+"</font>");
+
+<!--
+function initArray()
+ {
+  for(i=0;i<initArray.arguments.length;i++)
+  this[i]=initArray.arguments[i];
+ }
+ var isnMonths=new initArray("1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月");
+ var isnDays=new initArray("星期日","星期一","星期二","星期三","星期四","星期五","星期六","星期日");
+ today=new Date();
+ hrs=today.getHours();
+ min=today.getMinutes();
+ sec=today.getSeconds();
+ clckh=""+((hrs>12)?hrs-12:hrs);
+ clckm=((min<10)?"0":"")+min;clcks=((sec<10)?"0":"")+sec;
+ clck=(hrs>=12)?"下午":"上午";
+ var stnr="";
+ var ns="0123456789";
+ var a="";
+
+function getFullYear(d)
+{
+  yr=d.getYear();if(yr<1000)
+  yr+=1900;return yr;}
+  document.write("<table>");
+  
+//下面各行分别是一种风格，把不需要的删掉即可
+  document.write("<TR><TD>风格一:</TD><TD>"+isnDays[today.getDay()]+","+isnMonths[today.getMonth()]+""+today.getDate()+"日,"+getFullYear(today)+"年");
+  document.write("<TR><TD>风格二:</TD><TD>"+clckh+":"+clckm+":"+clcks+""+clck+"</TD></TR>");
+  document.write("<TR><TD>风格三:</TD><TD>"+isnDays[today.getDay()]+","+isnMonths[today.getMonth()]+""+today.getDate()+"日,"+getFullYear(today)+"年 "+clckh+":"+clckm+":"+clcks+""+clck+"</TD></TR>");
+  document.write("<TR><TD>风格四:</TD><TD>"+(today.getMonth()+1)+"/"+today.getDate()+"/"+(getFullYear(today)+"").substring(2,4)+"</TD></TR>");
+  document.write("<TR><TD>风格五:</TD><TD>"+hrs+":"+clckm+":"+clcks+"</TD></TR>");
+  document.write("<TR><TD VALIGN=TOP>风格六:</TD><TD>"+today+"</TD></TR>");
+
+  document.write("</table>");
+//-->
 
 	</script>
 	
