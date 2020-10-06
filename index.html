@@ -1,50 +1,162 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@ly524699106 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+ly524699106
+/
+liuyang
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+liuyang/index.html
+@ly524699106
+ly524699106 Update index.html
+Latest commit 7b72f67 1 hour ago
+ History
+ 1 contributor
+115 lines (114 sloc)  2.86 KB
+  
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<SCRIPT language="javascript">
-<!--
-function initArray()
- {
-  for(i=0;i<initArray.arguments.length;i++)
-  this[i]=initArray.arguments[i];
- }
- var isnMonths=new initArray("1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月");
- var isnDays=new initArray("星期日","星期一","星期二","星期三","星期四","星期五","星期六","星期日");
- today=new Date();
- hrs=today.getHours();
- min=today.getMinutes();
- sec=today.getSeconds();
- clckh=""+((hrs>12)?hrs-12:hrs);
- clckm=((min<10)?"0":"")+min;clcks=((sec<10)?"0":"")+sec;
- clck=(hrs>=12)?"下午":"上午";
- var stnr="";
- var ns="0123456789";
- var a="";
-
-function getFullYear(d)
-{
-  yr=d.getYear();if(yr<1000)
-  yr+=1900;return yr;}
-  document.write("<table>");
-  
-//下面各行分别是一种风格，把不需要的删掉即可
-  document.write("<TR><TD>风格一:</TD><TD>"+isnDays[today.getDay()]+","+isnMonths[today.getMonth()]+""+today.getDate()+"日,"+getFullYear(today)+"年");
-  document.write("<TR><TD>风格二:</TD><TD>"+clckh+":"+clckm+":"+clcks+""+clck+"</TD></TR>");
-  document.write("<TR><TD>风格三:</TD><TD>"+isnDays[today.getDay()]+","+isnMonths[today.getMonth()]+""+today.getDate()+"日,"+getFullYear(today)+"年 "+clckh+":"+clckm+":"+clcks+""+clck+"</TD></TR>");
-  document.write("<TR><TD>风格四:</TD><TD>"+(today.getMonth()+1)+"/"+today.getDate()+"/"+(getFullYear(today)+"").substring(2,4)+"</TD></TR>");
-  document.write("<TR><TD>风格五:</TD><TD>"+hrs+":"+clckm+":"+clcks+"</TD></TR>");
-  document.write("<TR><TD VALIGN=TOP>风格六:</TD><TD>"+today+"</TD></TR>");
-
-  document.write("</table>");
-//-->
-
-
-</div>
-
-</Script>
-
-
-</form>	
+	<meta charset="UTF-8">
+	<title>按钮滑动开关</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+		.slide-btn{
+			width:100px;
+			display:inline-block;
+			border:1px solid;
+			border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+			border-radius:5px;
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.slide-btn .inner-on,.slide-btn .inner-off{
+			width:151px;
+			box-sizing:border-box;
+			display: inline-block;
+			position: relative;
+			left:0;
+			cursor: pointer;
+			transition:left 0.5s;
+		}
+		.inner-on .left,.inner-off .left{
+			width: 50px;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background:#58b058;
+			text-align:center;
+			display: inline-block;
+			padding: 4px 0;
+		}
+		.inner-on .space,.inner-off .space{
+			width: 51px;
+			display: inline-block;
+			box-sizing:border-box;
+			padding: 4px 0;
+			color: #fff;
+			background-color: #f5f5f5;
+			border-left: 1px solid #cccccc;
+			border-right: 1px solid #cccccc;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+			border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		}
+		.inner-on .right,.inner-off .right{
+			width: 50px;
+			color: #fff;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background:#f9a123;
+			text-align:center;
+			display: inline-block;
+			padding: 4px 0;
+		}
+	</style>
+</head>
+<body style="padding-top:50px;padding-left:50px;">
+	<div class="slide-btn">
+		<div class="inner-on" id="inner">
+			<input style="display:none;" type="checkbox" checked>
+			<span class="left">ON</span><span class="space">&nbsp;</span><span class="right">OFF</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("inner").onclick = function() {
+			if (this.className == "inner-on") {
+				this.style.left = -51 + "px";
+				this.childNodes[1].checked = false;
+				this.className = "inner-off";
+			}else{
+				this.style.left = 0;
+				this.childNodes[1].checked = true;
+				this.className = "inner-on";
+			}
+		}
+	</script>
+	<SCRIPT language=JavaScript>
+var day="";
+var month="";
+var ampm="";
+var ampmhour="";
+var myweekday="";
+var year="";
+mydate=new Date();
+myweekday=mydate.getDay();
+mymonth=mydate.getMonth()+1;
+myday= mydate.getDate();
+myyear= mydate.getYear();
+year=(myyear > 200) ? myyear : 1900 + myyear;
+if(myweekday == 0)
+weekday=" 星期日 ";
+else if(myweekday == 1)
+weekday=" 星期一 ";
+else if(myweekday == 2)
+weekday=" 星期二 ";
+else if(myweekday == 3)
+weekday=" 星期三 ";
+else if(myweekday == 4)
+weekday=" 星期四 ";
+else if(myweekday == 5)
+weekday=" 星期五 ";
+else if(myweekday == 6)
+weekday=" 星期六 ";
+document.write("<font color=#ff0000>北京时间 "+year+"年"+mymonth+"月"+myday+"日 "+weekday+"</font>");
+</SCRIPT> 
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
