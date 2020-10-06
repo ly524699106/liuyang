@@ -38,6 +38,49 @@ function getFullYear(d)
 
   document.write("</table>");
 //-->
+	function left()
+
+    {
+
+    document.form1.action="contents.php";
+
+document.form1.method="get";
+
+    document.form1.submit();
+
+    }
+
+function right()
+
+    {
+
+    document.form1.action="test.jsp";
+
+document.form1.method="get";
+
+    document.form1.submit();
+
+    } 
+
+
+
+<form name="form1" action="" method="" target="_blank">
+
+   <div>
+
+        <input class="s_kuang" type="text" name="q" value="" />
+
+</div>
+
+<br/>
+
+<div>    
+
+    <input class="form2" type="submit" value="国内搜索(推荐)" onClick="left()"/>
+
+<input class="form1" type="submit" value="国际搜索(需要翻墙)" onClick="right()"/>
+
+</div>
 </SCRIPT>
 	
 </body>
